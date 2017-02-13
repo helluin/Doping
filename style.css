@@ -76,6 +76,7 @@ svg {
 .stanozolol { 
     font-family: "Times New Roman", Times, serif;
     font-weight: bold;
+    color: rgb(169, 149, 117); 
 }
 
 @media (max-width:800) { 
