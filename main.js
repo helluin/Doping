@@ -2,7 +2,7 @@ var margin = {
     top: 100,
     right: 40,
     bottom: 30,
-    left: 70
+    left: 100
 }
 var width = $("svg").width() - margin.right - margin.left,
     height = $("svg").height() - margin.top - margin.bottom;
@@ -94,7 +94,7 @@ function init_chart() {
         }
         //sort countries by count
         countries = countryArray.byCount();
-
+        console.log(countries);
         //axix config
         maxX = 42;
         maxY = 124;
@@ -114,7 +114,7 @@ function init_chart() {
             .attr("transform", "translate(0," + margin.top * (-1) + ")")
             .call(xAxis);
 
-        yScale = d3.scale.ordinal().domain(countries.slice(0, 10)).rangePoints([0, height * 20 / 62]);
+        yScale = d3.scale.ordinal().domain(top_countries).rangePoints([0, height * 20 / 62]);
         yAxis = d3.svg.axis().scale(yScale).orient("left");
         svg.append("g")
             .attr("class", "y_axis")
@@ -144,7 +144,7 @@ function drawChart(data) {
             .duration(500)
             .call(xAxis);
 
-        yScale = d3.scale.ordinal().domain(countries.slice(0, 10)).rangePoints([0, height * 20 / 62]);
+        yScale = d3.scale.ordinal().domain(top_countries).rangePoints([0, height * 20 / 62]);
         yAxis = d3.svg.axis().scale(yScale).orient("left");
         var axisEl_y = svg.select(".y_axis");
         axisEl_y.transition()
@@ -155,6 +155,7 @@ function drawChart(data) {
             .attr("fill", function (d) {
                 console.log(d.country);
                 var top_countries = ["Russia", "India", "Morocco", "Kenya", "Turkey", "Brazil", "Ukraine", "Italy", "France", "United States"];
+                
                 if (top_countries.indexOf(d.country) !== -1) {
                     return "rgba(0,0,0,0.6)";
                 } else {
@@ -178,12 +179,13 @@ function drawChart(data) {
             .attr("width", "9.5px")
             .attr("height", "9.5px")
             .attr("fill", function (d) {
-
+                console.log(d.country);
+                var top_countries = ["Russia", "India", "Morocco", "Kenya", "Turkey", "Brazil", "Ukraine", "Italy", "France", "United States"];
+                
                 if (top_countries.indexOf(d.country) !== -1) {
                     return "rgba(0,0,0,0.6)";
                 } else {
                     return "rgba(255,255,255,0)";
-
                 }
             })
             .attr("y", function (d) {
@@ -302,6 +304,33 @@ function lifeban() {
                 d.sex == "M" ? current_color = color_m_fade : current_color = color_f_fade;
                 return current_color;
             }
+        })
+    .attr("x", function (d, i) {
+            console.log("inside gender");
+            // console.log(i);
+            if (i < 112) {
+                var _i = i % 10;
+                return xScale(_i) + margin.left + _i * 10 + width /9;
+            } else {
+                var _i = (i - 112) % 10;
+                return xScale(_i + 100) + margin.left + _i * 10 + width / 9;
+            }
+        })
+        .attr("y", function (d, i) {
+            //console.log(i);
+            if (i < 112) {
+                var line_num = Math.floor(i / 10);
+                //console.log(line_num);
+                return yScale(line_num) + margin.top + line_num * 10;
+            } else {
+
+
+                var line_num = Math.floor((i - 112) / 10);
+                //console.log(line_num);
+                return yScale(line_num) + margin.top + line_num * 10;
+            }
+
+
         });
 }
 
