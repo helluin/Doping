@@ -24,7 +24,7 @@ var top_countries = ["Russia", "India", "Morocco", "Kenya", "Turkey", "Brazil", 
 
 $(window).on("resize", function () {
     var targetWidth = container.width();
-    console.log(targetWidth);
+    //console.log(targetWidth);
     chart.attr("width", targetWidth);
     chart.attr("height", Math.round(targetWidth / aspect));
 }).trigger("resize");
@@ -40,7 +40,8 @@ function init_swiper() {
         paginationClickable: true,
         direction: 'vertical',
         mousewheelControl: true,
-        keyboardControl: true
+        keyboardControl: true,
+        simulateTouch:true,
     });
 
     console.log(swiper.activeIndex);
@@ -70,7 +71,7 @@ function init_swiper() {
 //d3 drawing 
 function init_chart() {
     d3.json("doping.json", function (d) {
-        console.log("loaded data");
+        //console.log("loaded data");
         //helper function for sorting
         Array.prototype.byCount = function () {
             var itm, a = [],
@@ -94,7 +95,7 @@ function init_chart() {
         }
         //sort countries by count
         countries = countryArray.byCount();
-        console.log(countries);
+        //console.log(countries);
         //axix config
         maxX = 42;
         maxY = 124;
@@ -133,7 +134,7 @@ function drawChart(data) {
 
     //check if returning or initializing 
     if (selection[0][1] !== undefined) {
-        console.log("redrawing axis");
+        //console.log("redrawing axis");
         maxX = 42;
         maxY = 62;
 
@@ -153,7 +154,7 @@ function drawChart(data) {
 
         selection
             .attr("fill", function (d) {
-                console.log(d.country);
+                //console.log(d.country);
                 var top_countries = ["Russia", "India", "Morocco", "Kenya", "Turkey", "Brazil", "Ukraine", "Italy", "France", "United States"];
                 
                 if (top_countries.indexOf(d.country) !== -1) {
@@ -179,7 +180,7 @@ function drawChart(data) {
             .attr("width", "9.5px")
             .attr("height", "9.5px")
             .attr("fill", function (d) {
-                console.log(d.country);
+                //console.log(d.country);
                 var top_countries = ["Russia", "India", "Morocco", "Kenya", "Turkey", "Brazil", "Ukraine", "Italy", "France", "United States"];
                 
                 if (top_countries.indexOf(d.country) !== -1) {
@@ -250,7 +251,7 @@ function gender(d, c, dur) {
     var female = 112;
     selection.transition().duration(300)
         .attr("x", function (d, i) {
-            console.log("inside gender");
+            //console.log("inside gender");
             // console.log(i);
             if (i < 112) {
                 var _i = i % 10;
@@ -295,9 +296,9 @@ function lifeban() {
     selection.transition().transition(400)
          
         .attr("fill", function (d, i) {
-            console.log(d.sanction);
+            //console.log(d.sanction);
             if (d.sanction.indexOf("Lifetime") !== -1) {
-                console.log(d.sanction);
+                //console.log(d.sanction);
                 return "black";
             } else {
                 var current_color;
@@ -406,14 +407,14 @@ function stanozolol(d){
 }
 
 function manageAnimation(key, data) {
-    console.log(key);
+    //console.log(key);
     switch (key) {
     case "start":
         drawChart(d_global);
-        console.log("started");
+       // console.log("started");
         break;
     case "gender":
-        console.log("triggered gender");
+        //console.log("triggered gender");
         gender(d_global);
         break;
 

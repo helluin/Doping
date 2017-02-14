@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>Athlete Doping Graphics</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.css">
@@ -18,24 +19,37 @@
 </head>
 
 <body>
-
     <div id="graphic">
-        <svg id="main_svg" width="800px" height="800px" viewBox="0 0 800, 800" preserveAspectRatio="xMidYMid meet"></svg>
+        <div id="svg_container">
+            <svg id="main_svg" width="800px" height="800px" viewBox="0 0 800, 800" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
     </div>
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-       
-            <div class="swiper-slide" data-animation-key="start"><p>These are the top 10 countries with the most banned athletes by the AAF, as of Aug. 2015.</p></div>
-            <div class="swiper-slide" data-animation-key="gender"><p>All countries considered, more male athletes are under sanctions than female.</p></div>
-            <div class="swiper-slide" data-animation-key="lifeban"><p>Among the currently banned, 33 are banned lifetime.</p></div>
-            <div class="swiper-slide" data-animation-key="career_ending"><p>But any sanction imposed by the AAF can be career-ending.</p> </div>
-            <div class="swiper-slide"  ><p>Maybe more importantly, many drugs have severe side effect, sometimes not to the athletes' awareness.</p> </div>
-            <div class="swiper-slide" data-animation-key="stanozolol"><p>In this list of sanctions, <span class="stanozolol">Stanozolol</span> cases are the most. Possible side effect of this man-made steroid includes <strong>liver damage, menstrual disturbances , and even infertility</strong>.</p> </div>
 
-    </div>
+            <div class="swiper-slide" data-animation-key="start">
+                <p><span id="instruction">(Swipe or Press &#8595; to Continue)</span><br><br>These are the top 10 countries with the most banned athletes by the AAF, as of Aug. 2015.</p>
+            </div>
+            <div class="swiper-slide" data-animation-key="gender">
+                <p>All countries considered, more male athletes are under sanctions than female.</p>
+            </div>
+            <div class="swiper-slide" data-animation-key="lifeban">
+                <p>Among the currently banned, 33 are banned lifetime.</p>
+            </div>
+            <div class="swiper-slide" data-animation-key="career_ending">
+                <p>But any sanction imposed by the AAF can be career-ending.</p>
+            </div>
+            <div class="swiper-slide">
+                <p>Maybe more importantly, many drugs have severe side effect, sometimes not to the athletes' awareness.</p>
+            </div>
+            <div class="swiper-slide" data-animation-key="stanozolol">
+                <p>In this list of sanctions, <span class="stanozolol">Stanozolol</span> cases are the most. Possible side effect of this man-made steroid includes <strong>liver damage, menstrual disturbances , and even infertility</strong>.</p>
+            </div>
 
-    <script src="main.js"></script>
+        </div>
+
+        <script src="main.js"></script>
 </body>
 
 </html>
