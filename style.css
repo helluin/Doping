@@ -90,7 +90,7 @@ body {
     color: rgb(169, 149, 117);
 }
 
-#instruction{ 
+.instruction{ 
   color:rgb(150,150,150);
   text-transform: uppercase;
     font-size: 0.8em;
